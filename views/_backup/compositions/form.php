@@ -1,26 +1,29 @@
-<?php ob_start(); ?>
+<?php
+$content = '
 <section class="compositions">
     <h2>Créer une Composition</h2>
     <form method="POST">
         <input type="text" name="name" placeholder="Nom de la composition" required>
         <textarea name="description" placeholder="Description"></textarea>
-
+        
         <div style="margin: 15px 0;">
             <label>
                 <input type="checkbox" name="is_private" value="1">
                 Composition privée (non visible publiquement)
             </label>
         </div>
-
+        
         <h3>Sélectionner les unités</h3>
-        <?php foreach ($units as $u): ?>
-            <div>
-                <label><?php echo htmlspecialchars($u['name']); ?></label>
-                <input type="number" name="units[<?php echo $u['id']; ?>]" placeholder="Quantité" min="0" value="0">
-            </div>
-        <?php endforeach; ?>
-
+' . implode('', array_map(fn($u) => '
+        <div>
+            <label>' . htmlspecialchars($u['name']) . '</label>
+            <input type="number" name="units[' . $u['id'] . ']" placeholder="Quantité" min="0" value="0">
+        </div>
+', $units)) . '
+        
         <button type="submit">Créer</button>
     </form>
 </section>
-<?php $content = ob_get_clean(); include 'views/layout.php'; ?>
+';
+include 'views/layout.php';
+?>

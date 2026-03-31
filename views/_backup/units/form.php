@@ -1,15 +1,16 @@
-<?php ob_start(); ?>
+<?php
+$content = '
 <section class="units">
     <h2>Créer une Unité</h2>
     <form method="POST">
-        <label>Nom de l'unité:</label>
+        <label>Nom de l\'unité:</label>
         <select name="name" required>
             <option value="">-- Sélectionner une unité --</option>
-            <?php foreach ($predefinedNames as $name): ?>
-                <option value="<?php echo htmlspecialchars($name); ?>"><?php echo htmlspecialchars($name); ?></option>
-            <?php endforeach; ?>
+' . implode('', array_map(fn($name) => '
+            <option value="' . htmlspecialchars($name) . '">' . htmlspecialchars($name) . '</option>
+', $predefinedNames)) . '
         </select>
-
+        
         <input type="number" name="health" placeholder="Santé" required>
         <input type="number" name="damage" placeholder="Dégâts" required>
         <input type="number" name="armor" placeholder="Armure" required>
@@ -18,4 +19,6 @@
         <button type="submit">Créer</button>
     </form>
 </section>
-<?php $content = ob_get_clean(); include 'views/layout.php'; ?>
+';
+include 'views/layout.php';
+?>

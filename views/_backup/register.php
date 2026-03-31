@@ -1,19 +1,16 @@
-<?php ob_start(); ?>
+<?php
+$content = '
 <section class="register">
     <h2>Créer un compte</h2>
-    <?php if (isset($error)): ?>
-        <p class="error"><?php echo htmlspecialchars($error); ?></p>
-    <?php endif; ?>
-    <?php if (isset($success)): ?>
-        <p class="success"><?php echo htmlspecialchars($success); ?></p>
-    <?php endif; ?>
+    ' . (isset($error) ? '<p class="error">' . htmlspecialchars($error) . '</p>' : '') . '
+    ' . (isset($success) ? '<p class="success">' . htmlspecialchars($success) . '</p>' : '') . '
     <form method="POST">
-        <input type="text" name="username" placeholder="Nom d'utilisateur" minlength="3" required>
+        <input type="text" name="username" placeholder="Nom d\'utilisateur" minlength="3" required>
         <input type="password" name="password" placeholder="Mot de passe" id="password" required>
         <input type="password" name="password_confirm" placeholder="Confirmer le mot de passe" required>
         <button type="submit">Créer un compte</button>
     </form>
-
+    
     <div style="background: #fff3cd; padding: 15px; border-radius: 5px; margin-top: 20px;">
         <p><strong>Critères du mot de passe fort :</strong></p>
         <ul style="margin: 10px 0; padding-left: 20px;">
@@ -25,9 +22,11 @@
         </ul>
         <p><strong>Exemple :</strong> MyPass123@</p>
     </div>
-
+    
     <div style="margin-top: 15px;">
         <a href="index.php?page=login" class="btn">Déjà un compte ? Se connecter</a>
     </div>
 </section>
-<?php $content = ob_get_clean(); include 'views/layout.php'; ?>
+';
+include 'views/layout.php';
+?>

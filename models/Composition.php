@@ -70,6 +70,11 @@ class Composition {
         return $stmt->execute([$name, $description, $isPrivate, $id]);
     }
 
+    public function deleteCompositionUnits($compositionId) {
+        $stmt = $this->pdo->prepare('DELETE FROM composition_units WHERE composition_id = ?');
+        return $stmt->execute([$compositionId]);
+    }
+
     public function deleteComposition($id) {
         $stmt = $this->pdo->prepare('DELETE FROM compositions WHERE id = ?');
         return $stmt->execute([$id]);

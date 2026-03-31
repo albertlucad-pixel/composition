@@ -129,8 +129,7 @@ class CompositionController {
             );
 
             // Supprimer les anciennes unités
-            $stmt = $this->compositionModel->pdo->prepare('DELETE FROM composition_units WHERE composition_id = ?');
-            $stmt->execute([$_GET['id']]);
+            $this->compositionModel->deleteCompositionUnits($_GET['id']);
 
             // Ajouter les nouvelles unités
             if (isset($_POST['units']) && is_array($_POST['units'])) {

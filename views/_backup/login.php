@@ -1,11 +1,10 @@
-<?php ob_start(); ?>
+<?php
+$content = '
 <section class="login">
     <h2>Connexion</h2>
-    <?php if (isset($error)): ?>
-        <p class="error"><?php echo htmlspecialchars($error); ?></p>
-    <?php endif; ?>
+    ' . (isset($error) ? '<p class="error">' . htmlspecialchars($error) . '</p>' : '') . '
     <form method="POST">
-        <input type="text" name="username" placeholder="Nom d'utilisateur" required>
+        <input type="text" name="username" placeholder="Nom d\'utilisateur" required>
         <input type="password" name="password" placeholder="Mot de passe" required>
         <button type="submit">Se connecter</button>
     </form>
@@ -14,4 +13,6 @@
         <a href="index.php?page=register" class="btn">Créer un compte</a>
     </div>
 </section>
-<?php $content = ob_get_clean(); include 'views/layout.php'; ?>
+';
+include 'views/layout.php';
+?>

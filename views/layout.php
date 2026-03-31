@@ -27,11 +27,11 @@
         <div style="margin-bottom: 20px;">
             <a href="index.php" class="btn">← Accueil</a>
         </div>
-        <?php echo $content; ?>
+        <?php echo $content ?? ''; ?>
     </main>
 
     <footer>
-        <p>&copy; 2026 StarCraft Compositions</p>
+        <p>&copy; 2026 Compositions</p>
     </footer>
 </body>
 </html>
