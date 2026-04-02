@@ -16,7 +16,7 @@ Application web MVC en PHP permettant de créer et partager des compositions d'u
 ### 1. Cloner le projet
 
 ```bash
-git clone https://github.com/herveleguern/authenticate.git
+git clone https://github.com/albertlucad-pixel/composition
 ```
 
 Placer le dossier `composition` dans le répertoire `www` de Laragon :
